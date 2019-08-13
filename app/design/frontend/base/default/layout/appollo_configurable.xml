@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout>
+    <default>                                           
+        <reference name="head">
+            <!-- jQuery -->            
+            <action method="addItem"><type>skin_js</type><name>js/appollo/jquery-1.7.2.min.js</name><params/></action>
+            <!--<action method="addItem"><type>skin_js</type><name>js/appollo/jquery-noconflict.js</name><params/></action>-->
+        </reference>
+    </default>
+    <PRODUCT_TYPE_configurable translate="label" module="catalog">
+        <reference name="content">                         
+            <block type="appollo_configurable/configurable" name="appollo.configurable" template="appollo_configurable/product_update.phtml">
+                <action method="toHtml" />
+            </block>
+        </reference>
+    </PRODUCT_TYPE_configurable>                       
+</layout>

@@ -1,0 +1,10 @@
+<?php
+
+    class Appollo_Configurable_Model_Configurable extends Mage_Core_Model_Abstract
+    {
+        public function _construct()
+        {
+           
+            $this->_init('appollo_configurable/configurable');
+        }
+    }

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Appollo_Configurable</name>
+    <version>0.1.0</version>
+    <stability>stable</stability>
+    <license>appollo solutions eula</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Configurable Products</summary>
+    <description>Easier configurable products managment</description>
+    <notes>N/A</notes>
+    <authors><author><name>Anes Hasicic</name><user>anes_hasicic</user><email>anes.hasicic@appollo-solutions.com</email></author></authors>
+    <date>2013-05-10</date>
+    <time>12:07:15</time>
+    <contents><target name="magecommunity"><dir><dir name="Appollo"><dir name="Configurable"><dir name="Block"><dir name="Adminhtml"><dir name="Catalog"><dir name="Product"><file name="Tab.php" hash="0545180c750d83d6f8782a2b4cb1aac9"/></dir></dir></dir><file name="Configurable.php" hash="e8126032744f3c21188fd4d04407d207"/></dir><dir name="Helper"><file name="Data.php" hash="0c7b7fede160a2256a6320d89b11a5a2"/></dir><dir name="Model"><file name="Configurable.php" hash="85472e379ac4c8e19508ff66703d6bab"/><file name="Loader.php" hash="279302c9e0b737d81add8c236b58934a"/><dir name="Mysql4"><dir name="Configurable"><file name="Collection.php" hash="020161b6ac11c96bec6ca740cf03187e"/></dir><file name="Configurable.php" hash="138c5cb73490bc5cda2beecef6c159ed"/></dir><file name="Observer.php" hash="34873823bdf7c2ca254cb2e5d7357458"/></dir><dir name="controllers"><file name="ConfigurableController.php" hash="75e874c97ce753209ed2ec0efd6ba6df"/></dir><dir name="etc"><file name="config.xml" hash="f5545374af8f739a25c2f0bd774a4ec1"/><file name="system.xml" hash="2b202d4d8253dd029a9c09058a3cfbcc"/></dir><dir name="sql"><dir name="appollo_configurable_setup"><file name="mysql4-install-0.1.0.php" hash="5b67ae05f15696cf124c86e03d810e60"/></dir></dir></dir></dir></dir></target><target name="magedesign"><dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="appollo_configurable.xml" hash="35bd4372482df6da25a7a90abfd96693"/></dir><dir name="template"><dir name="appollo_configurable"><file name="product_update.phtml" hash="08f6774a1ac532628e0c9a4f74eaadb3"/></dir></dir></dir></dir></dir><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="appollo_configurable.xml" hash="45050c6facbe7c48adb8454a53c4a318"/></dir><dir name="template"><dir name="appollo_configurable"><file name="product_tab.phtml" hash="7c63d4bce17dba35c3dd77131a87bc45"/></dir></dir></dir></dir></dir></dir></target><target name="mageetc"><dir><dir name="modules"><file name="Appollo_Configurable.xml" hash="d2cf5d36481d67320ba33e2a08f51472"/></dir></dir></target><target name="magemedia"><dir><dir name="appollo"><file name="cart.gif" hash="59cc75c52f84fb5865ad3fd1af5c986a"/><file name="coffee_cup.gif" hash="b865a74aef049dbf3d1eccb970f0b734"/><file name="default.gif" hash="1462c6ad90173b4f68a116e817326a37"/><file name="gears.gif" hash="60502fab998f16d4b1887f930d0f8a73"/></dir></dir></target><target name="mageskin"><dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="js"><dir name="appollo"><file name="jquery-1.7.2.min.js" hash="57feeb7e3800a1e26bc6468f79d28d59"/><file name="jquery-noconflict.js" hash="3179f2255b046d5f2e9a71e365287bef"/></dir></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>5.10.0</max></php></required></dependencies>
+</package>

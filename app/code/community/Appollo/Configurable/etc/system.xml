@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+
+<config>
+    
+    <tabs>
+        <appollo_solutions translate="label" module="appollo_configurable">
+            <label>Appollo Solutions</label>
+            <sort_order>196</sort_order>
+        </appollo_solutions>
+    </tabs>
+    
+    <sections>
+        <appollo_configurable translate="label" module="appollo_configurable">
+            <label>Configurable Products</label>
+            <tab>appollo_solutions</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <comment>Enable or disable the overall extension functionality</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <updateName translate="label">
+                            <label>Update Product Name</label>
+                            <comment>* Customizable on product level</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </updateName>
+                        <updateShortDescription translate="label">
+                            <label>Update Product Review</label>
+                            <comment>* Customizable on product level</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </updateShortDescription>
+                        <updateDescription translate="label">
+                            <label>Update Description</label>
+                            <comment>* Customizable on product level</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </updateDescription>
+                        <updateImages translate="label">
+                            <label>Update Images</label>
+                            <comment>* Customizable on product level</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </updateImages>
+                        <updateAdditional translate="label">
+                            <label>Update Product Additional Info</label>
+                            <comment>* Customizable on product level</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </updateAdditional>
+                        <scrollTop translate="label">
+                            <label>Scroll To Top</label>
+                            <comment>Scroll to top after product has been loaded</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </scrollTop>
+                        <customLightbox translate="label">
+                            <label>Custom Lightbox</label>
+                            <comment>Select Yes if you are using lightbox plugin other than "Easy Lightbox" or default Magento lightbox (see the manual or contact us)</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customLightbox>
+                    </fields>
+                </general>
+                <loader translate="label">
+                    <label>Ajax Loader</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>11</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <showLoader translate="label">
+                            <label>Show Loader</label>
+                            <comment>Overlay loader after the options are selected</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showLoader>
+                        <loaderType translate="label">
+                            <label>Loader</label>
+                            <comment>Select animation type of the overlay loader</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>appollo_configurable/loader</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </loaderType>
+                    </fields>
+                </loader>
+                <highlighter translate="label">
+                    <label>Text Glow</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>12</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable</label>
+                            <comment>Choose to enable text glow effect after product load</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <color translate="label">
+                            <label>Color</label>
+                            <comment>Choose glow effect color</comment>
+                            <frontend_type>text</frontend_type>                            
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </color>
+                        <timeout translate="label">
+                            <label>Timeout</label>
+                            <comment>Duration of text glow</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </timeout>
+                    </fields>
+                </highlighter>
+               <developer translate="label">
+                    <label>Developer Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>13</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <nameDiv translate="label">
+                            <label>Product Name Div</label>                            
+                            <frontend_type>text</frontend_type>                            
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </nameDiv>
+                        <reviewDiv translate="label">
+                            <label>Product Review Div</label>
+                            <frontend_type>text</frontend_type>                            
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reviewDiv>
+                        <descriptionDiv translate="label">
+                            <label>Product Description Div</label>
+                            <comment>Should be ".box-description .std" for magento default theme</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </descriptionDiv>
+                        <additionalDiv translate="label">
+                            <label>Product Additional info Table</label>
+                            <comment>These values can be changed to adapt to your custom theme (see manual or contact us)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </additionalDiv>
+                    </fields>
+                </developer>                               
+            </groups>
+        </appollo_configurable>
+    </sections>
+    
+</config>

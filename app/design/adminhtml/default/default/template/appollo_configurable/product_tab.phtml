@@ -1,0 +1,107 @@
+<?php
+/**
+ * Appollo Configurable Custom Tab
+ */
+?>
+<div class="entry-edit">
+    <div class="section-config active">
+        <div class="entry-edit-head collapseable"><a id="appollo_configurable_general-head" href="#" onclick="Fieldset.toggleCollapse('appollo_configurable_general', 'http://magento.appollo-solutions.com/index.php/admin/system_config/state/key/1d276c9d8312db11b273d0badb6d5f9a/'); return false;" class="open">General</a></div>
+        <input id="appollo_configurable_general-state" name="config_state[appollo_configurable_general]" type="hidden" value="1">
+        <fieldset class="config collapseable" id="appollo_configurable_general" style="">
+            <legend>General</legend>
+            <table cellspacing="0" class="form-list">
+                <colgroup class="label"></colgroup>
+                <colgroup class="value"></colgroup>
+                <colgroup class="scope-label"></colgroup>
+                <colgroup class=""></colgroup>
+                <tbody>
+                    <tr id="row_appollo_configurable_general_enabled">
+                        <td class="label"><label for="appollo_configurable_general_enabled"> Enabled</label></td>
+                        <td class="value">
+                            <select id="appollo_configurable_general_enabled" name="enabled" class=" select">
+                                <option value="1" <?php if( $this->acp_data['enabled'] == 1 ) echo 'selected' ?>>Yes</option>
+                                <option value="0" <?php if( $this->acp_data['enabled'] == 0 ) echo 'selected' ?>>No</option>
+                            </select>
+                            <p class="note"><span>Enable or disable extension functionality for this product</span></p>
+                        </td>
+                        <td class="scope-label">[STORE VIEW]</td>
+                        <td class=""></td>
+                    </tr>
+                    <tr id="row_appollo_configurable_general_updateName">
+                        <td class="label"><label for="appollo_configurable_general_updateName"> Update Product Name</label></td>
+                        <td class="value">
+                            <select id="appollo_configurable_general_updateName" name="update_name" class=" select">
+                                <option value="1" <?php if( $this->acp_data['update_name'] == 1 ) echo 'selected' ?>>Yes</option>
+                                <option value="0" <?php if( $this->acp_data['update_name'] == 0 ) echo 'selected' ?>>No</option>
+                            </select>
+                           
+                        </td>
+                        <td class="scope-label">[STORE VIEW]</td>
+                        <td class=""></td>
+                    </tr>
+                    <tr id="row_appollo_configurable_general_updateShortDescription">
+                        <td class="label"><label for="appollo_configurable_general_updateShortDescription"> Update Product Review</label></td>
+                        <td class="value">
+                            <select id="appollo_configurable_general_updateShortDescription" name="update_review" class=" select">
+                                <option value="1" <?php if( $this->acp_data['update_review'] == 1 ) echo 'selected' ?>>Yes</option>
+                                <option value="0" <?php if( $this->acp_data['update_review'] == 0 ) echo 'selected' ?>>No</option>
+                            </select>
+                           
+                        </td>
+                        <td class="scope-label">[STORE VIEW]</td>
+                        <td class=""></td>
+                    </tr>
+                    <tr id="row_appollo_configurable_general_updateDescription">
+                        <td class="label"><label for="appollo_configurable_general_updateDescription"> Update Description</label></td>
+                        <td class="value">
+                            <select id="appollo_configurable_general_updateDescription" name="update_description" class=" select">
+                                <option value="1" <?php if( $this->acp_data['update_description'] == 1 ) echo 'selected' ?>>Yes</option>
+                                <option value="0" <?php if( $this->acp_data['update_description'] == 0 ) echo 'selected' ?>>No</option>
+                            </select>
+                          
+                        </td>
+                        <td class="scope-label">[STORE VIEW]</td>
+                        <td class=""></td>
+                    </tr>
+                    <tr id="row_appollo_configurable_general_updateImages">
+                        <td class="label"><label for="appollo_configurable_general_updateImages"> Update Images</label></td>
+                        <td class="value">
+                            <select id="appollo_configurable_general_updateImages" name="update_images" class=" select">
+                                <option value="1" <?php if( $this->acp_data['update_images'] == 1 ) echo 'selected' ?>>Yes</option>
+                                <option value="0" <?php if( $this->acp_data['update_images'] == 0 ) echo 'selected' ?>>No</option>
+                            </select>
+                          
+                        </td>
+                        <td class="scope-label">[STORE VIEW]</td>
+                        <td class=""></td>
+                    </tr>
+                    <tr id="row_appollo_configurable_general_updateAdditional">
+                        <td class="label"><label for="appollo_configurable_general_updateAdditional"> Update Product Additional Info</label></td>
+                        <td class="value">
+                            <select id="appollo_configurable_general_updateAdditional" name="update_additional_info" class=" select">
+                                <option value="1" <?php if( $this->acp_data['update_additional_info'] == 1 ) echo 'selected' ?>>Yes</option>
+                                <option value="0" <?php if( $this->acp_data['update_additional_info'] == 0 ) echo 'selected' ?>>No</option>
+                            </select>
+                            
+                        </td>
+                        <td class="scope-label">[STORE VIEW]</td>
+                        <td class=""></td>
+                    </tr>                    
+                    <tr id="row_appollo_configurable_general_updateAdditional">
+                        <td class="label"></td>
+                        <td class="value">
+                            <br>
+                            <span>* Any changes here will override global settings under System/Configuration/Appollo Configurable</span>
+                        </td>
+                        <td class="scope-label"></td>
+                        <td class=""></td>
+                    </tr>                    
+                </tbody>
+            </table>
+        </fieldset>
+        <script type="text/javascript">//<![CDATA[
+            Fieldset.applyCollapse('appollo_configurable_general');
+            //]]>
+        </script>
+    </div>
+</div>

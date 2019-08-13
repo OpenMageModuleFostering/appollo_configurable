@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    
+    <modules>
+        <Appollo_Configurable>
+            <version>0.1.0</version>
+        </Appollo_Configurable>
+    </modules>
+              
+    <admin>
+        <routers>
+            <appollo_configurable>
+                <use>admin</use>
+                <args>
+                    <module>Appollo_Configurable</module>
+                    <frontName>appollo_configurable_admin</frontName>
+                </args>
+            </appollo_configurable>
+        </routers>
+    </admin>
+               
+    <frontend>
+        <routers>
+            <appollo_configurable>
+                <use>standard</use>
+                <args>
+                    <module>Appollo_Configurable</module>
+                    <frontName>appollo_configurable</frontName>
+                </args>
+            </appollo_configurable>
+        </routers>
+        
+        <layout>
+            <updates>
+                <appollo_configurable>
+                    <file>appollo_configurable.xml</file>
+                </appollo_configurable>
+            </updates>
+        </layout>
+    </frontend>
+    
+    <global>                       
+        <models>
+            <appollo_configurable>
+                <class>Appollo_Configurable_Model</class>
+                <resourceModel>appollo_configurable_mysql4</resourceModel>
+            </appollo_configurable>
+            <appollo_configurable_mysql4>
+                <class>Appollo_Configurable_Model_Mysql4</class>
+                <entities>
+                    <configurable>
+                        <table>appollo_configurable</table>
+                    </configurable>
+                </entities>
+            </appollo_configurable_mysql4>
+        </models>
+        <helpers>
+            <appollo_configurable>
+                <class>Appollo_Configurable_Helper</class>
+            </appollo_configurable>
+        </helpers>
+          
+        <blocks>
+            <appollo_configurable>
+                <class>Appollo_Configurable_Block</class>
+            </appollo_configurable>                        
+        </blocks>
+        
+        <resources>
+            <appollo_configurable_setup>
+                <setup>
+                    <module>Appollo_Configurable</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </appollo_configurable_setup>
+            <appollo_configurable_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </appollo_configurable_write>
+            <appollo_configurable_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </appollo_configurable_read>
+        </resources>
+     
+    </global>
+    <default>
+        <appollo_configurable>
+            <general>
+                <enabled>1</enabled>                                
+                <updateName>1</updateName>
+                <updateShortDescription>1</updateShortDescription>
+                <updateDescription>1</updateDescription>
+                <updateImages>1</updateImages>
+                <updateAdditional>1</updateAdditional>                                                                                               
+                <scrollTop>1</scrollTop>
+                <customLightbox>0</customLightbox>
+            </general>
+            <loader>
+                <showLoader>1</showLoader>
+                <loaderType>default</loaderType>
+            </loader>
+            <highlighter>
+                <enabled>1</enabled>
+                <color>#0040FF</color>
+                <timeout>2000</timeout>
+            </highlighter>          
+            <developer>
+                <nameDiv>.product-shop > .product-name</nameDiv>
+                <reviewDiv>.short-description > .std</reviewDiv>
+                <descriptionDiv>#product_tabs_description_contents > .std</descriptionDiv>
+                <additionalDiv>#product-attribute-specs-table</additionalDiv>
+            </developer>
+        </appollo_configurable>
+    </default>
+    
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <appollo_configurable translate="title" module="appollo_configurable">
+                                            <title>Appollo Configurable Section</title>
+                                            <sort_order>55</sort_order>
+                                        </appollo_configurable>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    
+        <layout>
+            <updates>
+                <appollo_configurable>
+                    <file>appollo_configurable.xml</file>
+                </appollo_configurable>
+            </updates>
+        </layout>
+        <events>
+            <catalog_product_save_after>
+                <observers>
+                    <appollo_configurable>
+                        <type>singleton</type>
+                        <class>appollo_configurable/observer</class>
+                        <method>saveProductTabData</method>
+                    </appollo_configurable>
+                </observers>
+            </catalog_product_save_after>
+        </events>
+    
+    </adminhtml>
+    
+</config>

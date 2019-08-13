@@ -1,0 +1,202 @@
+<?php
+
+$acp_config = Mage::getStoreConfig('appollo_configurable/general');
+$loader_config = Mage::getStoreConfig('appollo_configurable/loader');
+$glow_config = Mage::getStoreConfig('appollo_configurable/highlighter');
+$dev_config = Mage::getStoreConfig('appollo_configurable/developer');
+
+$product_level_config =  Mage::getModel('appollo_configurable/configurable')->getCollection()->addFieldToFilter('product_id', Mage::registry('current_product')->getId())->getFirstItem();
+
+if ($acp_config['enabled'] == 1):
+
+    if( $product_level_config->getId() )
+    {
+        $acp_config['enabled'] = $product_level_config->getEnabled();
+        $acp_config['updateName'] = $product_level_config->getUpdateName();
+        $acp_config['updateShortDescription'] = $product_level_config->getUpdateReview();
+        $acp_config['updateDescription'] = $product_level_config->getUpdateDescription();
+        $acp_config['updateImages'] = $product_level_config->getUpdateImages();
+        $acp_config['updateAdditionalInfo'] = $product_level_config->getUpdateAdditionalInfo();
+    }
+?>
+    
+<script type="text/javascript">
+    var acp_loader = '<div id="acp_loader_overlay" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: #ccc; display: none; z-index: 9999; opacity: 0.7; filter: alpha(opacity=70);"><div id="acp_loader" style="z-index: 10000; width: 128px; height: 128px; background-image: url(\'<?php echo Mage::getBaseUrl('media') ?>appollo/<?php echo $loader_config['loaderType'] ?>.gif\');""></div></div>';
+    jQuery(document).ready(function()
+    {
+        var values = [];
+        attributes = jQuery('.super-attribute-select');            
+        var options = <?php echo $this->getLayout()->createBlock('Mage_Catalog_Block_Product_View_Type_Configurable')->setProduct(Mage::registry('current_product'))->getJsonConfig(); ?>;
+        var pass;        
+        
+        jQuery.fn.glowEffect = function(start, end, duration) {
+            var thisn = this;
+
+            return this.css("a", start).animate({
+                a: end
+            }, {
+                duration: duration,
+                step: function(now) {
+                    thisn.css("text-shadow","0px 0px "+now+"px <?php echo $glow_config['color'] ?>");
+                },
+                complete: function(){
+                    thisn.css("text-shadow", "0px 0px 0px");
+                }
+            });
+        }
+
+        $.getProduct = function(simple)
+        {
+            jQuery('#acp_loader').css("position","absolute");
+            jQuery('#acp_loader_overlay').css('height', jQuery(document).innerHeight());
+            jQuery('#acp_loader').css("top", Math.max(0, ((jQuery(window).height() - jQuery(jQuery('#acp_loader')).innerHeight()) / 2) + jQuery(window).scrollTop())-50 + "px");
+            jQuery('#acp_loader').css("left", Math.max(0, ((jQuery(window).width() - jQuery(jQuery('#acp_loader')).outerWidth()) / 2) + jQuery(window).scrollLeft()) + "px");
+            jQuery('select').attr('disabled', true);                  
+
+            <?php if ($loader_config['showLoader'] == 1): ?>
+                if( !simple )
+                {
+                    jQuery('#acp_loader_overlay').fadeIn('slow');
+                }                
+            <?php endif ?>
+
+            jQuery.ajax({
+                url: "<?php echo Mage::getBaseUrl() ?>appollo_configurable/configurable/associated?configurable=<?php echo Mage::registry('current_product')->getId() ?>",
+                type: "post",
+                data: {
+                    attributes:  options,
+                    values: values
+                },
+                success: function( data ) {                                                                                                                                                          
+                    data = jQuery.parseJSON(data);
+
+                    <?php if ($acp_config['updateName'] == 1): ?>
+                        jQuery('<?php echo $dev_config['nameDiv'] ?>').html("<h1>" + data.name + "</h1>");
+                    <?php endif ?>
+
+                    <?php if ($acp_config['updateShortDescription'] == 1): ?>
+                        jQuery('<?php echo $dev_config['reviewDiv'] ?>').html(data.short_description);                            
+                    <?php endif ?>
+
+                    <?php if ($acp_config['updateDescription'] == 1): ?>
+                        jQuery('<?php echo $dev_config['descriptionDiv'] ?>').html(data.description);
+                        //jQuery('.box-description > .std').html(data.description);
+                    <?php endif ?>                                    
+
+                    <?php if ($acp_config['updateAdditional'] == 1): ?>
+                        jQuery('<?php echo $dev_config['additionalDiv'] ?>').html(data.additional_info);
+                    <?php endif ?>
+
+                    <?php if($glow_config['enabled'] == 1): ?>
+
+                        glow_timeout = <?php if(is_numeric($glow_config['timeout'])) echo $glow_config['timeout']; else echo '500'; ?>;
+
+                        <?php if ($acp_config['updateDescription'] == 1): ?>
+                        if ( !jQuery('<?php echo $dev_config['descriptionDiv'] ?>').is(':animated') )                            
+                            jQuery('<?php echo $dev_config['descriptionDiv'] ?>').glowEffect(0,40,glow_timeout);
+                        <?php endif ?>
+
+                        <?php if ($acp_config['updateShortDescription'] == 1): ?>
+                        if ( !jQuery('<?php echo $dev_config['reviewDiv'] ?>').is(':animated') )
+                                jQuery('<?php echo $dev_config['reviewDiv'] ?>').glowEffect(0,40,glow_timeout);
+                        <?php endif ?>
+
+                        <?php if ($acp_config['updateName'] == 1): ?>
+                        if ( !jQuery('<?php echo $dev_config['nameDiv'] ?>').is(':animated') )
+                                jQuery('<?php echo $dev_config['nameDiv'] ?>').glowEffect(0,40,glow_timeout);                            
+                        <?php endif ?>
+
+                        <?php if ($acp_config['updateAdditional'] == 1): ?>
+                        if ( !jQuery('<?php echo $dev_config['additionalDiv'] ?>').is(':animated') )
+                                jQuery('<?php echo $dev_config['additionalDiv'] ?>').glowEffect(0,40,glow_timeout);
+                        <?php endif ?>
+
+                    <?php endif ?>
+                    <?php if ($acp_config['updateImages'] == 1): ?>
+                        <?php if ($acp_config['customLightbox'] == 1): ?>
+
+                        <?php else: ?>
+                        if( data.easy_lightbox == 'enabled' )
+                        {
+                            base = '<a href="' + data.base_image_large + '" rel="lightbox[rotation]" onclick="return false;">';
+                            base += '<img src="' + data.base_image_small +'"></a>';                                                                                              
+
+                            jQuery('.product-img-box > a').first().remove();
+                            jQuery('.product-img-box').prepend(base);
+                            jQuery('.more-views > ul').html('');
+                            thumb = '';
+                            jQuery.each( data.images, function(index){
+
+                                thumb += '<li><a href="' + this.large + '" rel="lightbox[rotation] onclick="return false;">';
+                                thumb += '<img src="' + this.thumbnail + '"></a></li>';
+
+                            });
+                            jQuery('.more-views > ul').html(thumb);
+                        }
+                        else
+                        {
+                            jQuery('.product-img-box > p:first > img').attr('src', data.base_image_large);
+                            //jQuery('.product-img-box > p:first').css('line-height', '265')
+                            //jQuery('.product-img-box > p:first > img').css('vertical-align', 'middle');                                                        
+
+                            jQuery('.more-views > ul').html('');
+                            thumb = '';
+                            jQuery.each( data.images, function(index){
+
+                                thumb += '<li><a href="#" onclick="popWin(\'' + this.large + '\', \'gallery\', \'width=300,height=300,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes\'); return false;" rel="lightbox[rotation] onclick="return false;">';
+                                thumb += '<img src="' + this.thumbnail + '"></a></li>';
+
+
+                            });
+                            jQuery('.more-views > ul').html(thumb);
+                            
+                            product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');
+                       }
+                       <?php endif ?>
+                   <?php endif ?>
+
+                   <?php if ($loader_config['showLoader'] == 1): ?>                        
+                            jQuery('#acp_loader_overlay').fadeOut('fast');                        
+                   <?php endif ?>
+
+                   <?php if ($acp_config['scrollTop'] == 1): ?>
+                        jQuery("html, body").animate({scrollTop: 0}, 600);
+                   <?php endif ?>
+                   jQuery('select').removeAttr('disabled'); 
+
+                }
+            }).fail(function(){
+                alert('There has been an error\nTry again or refresh the page.');
+            });
+        }
+
+        $.getAttribs = function()
+        {
+            values = Array();
+            attributes.each( function(index, dom){
+                selected = jQuery(this).val();
+                if( jQuery(this).val() == '' ) pass = false;
+
+                values.push( jQuery(this).val() );
+
+            });
+        }
+
+        jQuery('body').prepend( acp_loader );
+
+        attributes.change(function(){                            
+            pass = true;    
+
+            $.getAttribs();      
+
+            if( pass )
+            {
+                $.getProduct(false);
+            }
+        });    
+
+    }); 
+
+</script>
+
+<?php endif ?>

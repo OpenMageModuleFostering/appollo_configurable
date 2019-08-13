@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Appollo_Configurable",
+    "type": "magento-module",
+    "license": "appollo-solutions-eula",
+    "homepage": "",
+    "description": "Configurable Products",
+    "authors": [
+    {
+        "name": "Anes Hasicic",
+        "email": "anes.hasicic@appollo-solutions.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
